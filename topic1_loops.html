@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Topic 1-Loops</title>
+</head>
+
+<body>
+    <p id="demo_forLoop">
+        <script>
+            //A For Loop loops through a block of code until the second statement is no longer true, then exits loop.
+            //syntax: for (statement 1; statement 2; statement 3;){code to be executed;}
+            //statement 1 (is optional) initializes the loop variable (i = 10) and is executed one time before the execution of the loop code block
+            //statement 2 (is optional)defines the condition for executing the code block. If true, loop executes. 
+            //If this statement is omitted there must be a break in the loop or it will crash!
+            //Statement 3 (is optional if value increments inside of the loop) is executed everytime AFTER the code block has been executed.
+            //This can be (i++, i--, i=i+2, i=i-3.....)
+            var text = " ";
+            var i;
+            
+            for (i = 10; i > -1; i--) {
+                text += "The time remaining is " + i + " seconds..." + "<br>";
+            }
+            
+            document.getElementById("demo_forLoop").innerHTML = text;
+        </script>
+    </p>
+    
+    <p id="demo_forInLoop">
+        <script>
+            //A For/In Loop loops through the properties of an OBJECT.
+            //syntax: for (x in object){code to be executed;}
+            //I will first create an object "book", then loop through the properties of the object.
+            var book = {
+                title: "Rich Dad Poor Dad",
+                author: "Robert Kiyosaki",
+                published: "1997"
+            };
+            var text = " ";
+            
+            for (x in book) {
+                text += book[x];
+            }
+            
+            document.getElementById("demo_forInLoop").innerHTML = text;
+        </script>
+    </p>
+    
+    <p id="demo_forOfLoop">
+        <script>
+            //A For/Of Loop loops through the values of an iterable objects (like Arrays, strings, maps, and NodeLists).
+            //syntax: for (variable of object){code to be executed;}
+            //I will first create an array "myCars", then loop through the values of the object.
+            var myCars = ["Sienna", "Camry", "Jetta"];
+            var models;
+            
+            for (models of myCars) {
+                document.write(models + "<br>");
+            }
+        </script>
+    </p>
+    
+    <p id="demo_whileLoop">
+        <script>
+            //loops through a block of code as long as the specified condition is true.
+            //works similar to a For Loop with statement 1 and 3 omitted.
+            //syntax: while (condition) {code block (must include an increment/decrement);}
+            var text = " ";
+            var i = 10;
+            
+            while (i > -1) {
+                text += "<br> Time remaining is " + i + " seconds.";
+                i--;
+            }
+            
+            document.getElementById("demo_whileLoop").innerHTML = text;
+        </script>
+
+    </p>
+    
+    <p id="demo_doWhileLoop">
+        <script>
+            //Do/While Loop is a variant of the While Loop.
+            //Executes once before checking if condition is true. Will repeat if true. Good if the loop HAS to run at least once.
+            //syntax: do {code block; increment;}while (condition);-- code block must include an increment/decrement.
+            var text = " ";
+            var i = -1; //because this will run once before checking the condition, it will print "-1", even though it does not meet the condition.
+            
+            do {
+                text += "<br> Time passed is " + i + " seconds.";
+                i++;
+            }
+            while (i > -1 && i < 10);
+            //In this statement -1 is not true, 
+            //but it runs, then increments to 0, AND THEN checks the condition, and 0 is true, so it continues. 
+            //Think of it as "Do this, then keep doing it while the condition is true."
+            
+            document.getElementById("demo_doWhileLoop").innerHTML = text;
+        </script>
+
+    </p>
+
+</body></html>

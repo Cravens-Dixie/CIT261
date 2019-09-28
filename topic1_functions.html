@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Topic 1-Functions</title>
+</head>
+
+<body>
+    <p id="demo">
+        <script>
+            //Functions are blocks of code that are reusable. They are not used until invoked or called.
+            //Functions are created with the keyword function function_name(parameter1, parameter2,...parameterX) {code to be executed;}
+            //Function names can include letters, digits, underscores, and dollar signs
+            //Functions usually include a return statement.
+            function toCelsius(fahrenheit) {
+                return (5 / 9) * (fahrenheit - 32);
+            }
+
+            document.getElementById("demo").innerHTML = toCelsius(77); //when invoking a function, pass in an argument (or value, in this case "77")
+
+        </script>
+    </p>
+    <p id="demo2">
+        <script>
+            //Functions can be variables
+            var x = toCelsius(77); //refers to the function above. This will invoke, or call, the toCelsius function defined above and return the value
+            var text = "The temperature in BoPeep's neighborhood is " + x + " degrees Celcius."
+
+            //or I can combine it into one statement and invoke the function inside the variable:
+            var text = "The temperature in BoPeep's neighborhood is " + toCelsius(77) + " degrees Celcius. What a beautiful day!"
+
+            document.getElementById("demo2").innerHTML = text;
+
+        </script>
+    </p>
+
+</body>
+
+</html>
+
+
