@@ -34,11 +34,15 @@
             //let's add in some object and array type variables:
             
             //This is an object named "address". Objects have name:value pairs called PROPERTIES, and are separated by commas:
+            //Objects can include a method (which is a function stored as a property). See the "fullAddress" property.
             var address = {
                 houseNumber: "1415",
                 streetName: "Shepherds Lane",
                 city: "Sheepville",
-                state: "CA"
+                state: "CA", 
+                fullAddress: function() {
+                    return this.houseNumber + " " + this.streetName + ", " + this.city + ", " + this.state;
+                }
             };
             
             //this is an Array. It can also be coded like the address object above with one item per line and a comma between items.
@@ -63,6 +67,9 @@
             //Array elements are accessed with array_name[number], starting with 0.  I used favFoods[0].
             //If the entire array is desired, just name the array with no index [] .So "favFoods" would have printed the entire array.
             //The length of an array is always one more than the highest array index. To access the last array item, use array_name.length - 1
+            
+            //Following document.getElementById is to show that the Object method works.
+             //document.getElementById("demo").innerHTML = address.fullAddress();
         </script>
     </p>
 
