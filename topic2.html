@@ -39,6 +39,48 @@
 
     </script>
     </p>
+    <p id="demo2">
+        <script>
+            //Instantiation
+            //object constructors is the JS version of a class. When an object instance is created from a class, the class's constructor function is run to create it. The 
+            //process of creating an object instance from a class is called instanstiation--the object instance is instantiated from the class.
+            //The constructor function starts with a capital letter to differentiate it.
+            function Car(make, model, year) {
+                this.make = make;
+                this.model = model;
+                this.year = year;
+            }
+            
+            //instantiate a new object with specific properties:
+            var mycar = new Car('Toyota', 'Sienna', 2009);
+            var dallinscar = new Car('Toyota', 'Yaris', 2007);
+            var scottscar = new Car('Toyota','Camry', 2010);
+            
+            document.getElementById("demo2").innerHTML = dallinscar.model;
+            
+            //new constructor function for people. We will combine the Car and Person to get 'owner' info for Car object
+            function Person(name, age, gender) {
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+            }
+            var dixie = new Person('Dixie C', 47, 'F');
+            var dallin = new Person("Dallin Cravens", 20, 'M');
+            var scott = new Person('Scott C', 53, 'M');
+            
+            //rewrite Car() to include an owner property and link it to one of the instantiated Person() objects
+            /*function Car(make, model, year, owner) {
+                this.make = make;
+                this.model = model;
+                this.year = year;
+                this.owner = owner;
+            }
+            var mycar = new Car('Toyota', 'Sienna', 2009, dixie);
+            
+            document.getElementById("demo2").innerHTML = mycar.owner.name;*/
+        </script>
+    
+    </p>
     </body>
 
 </html>
