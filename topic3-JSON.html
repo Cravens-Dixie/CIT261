@@ -60,23 +60,27 @@
         for (values in person) {
             document.getElementById("demo2").innerHTML += person[values] + "<br>";
         }
-            
-        //console.log(person);
-        
-        
-        
 
     </script>
     </p>
     <p id="demo3">
-        <script>
-            var myJSON = fetch('https://jsonplaceholder.typicode.com/todos/1')
-            .then(response => response.json())
-            .then(json => console.log(json));
-            
-            console.log(myJSON);
-        
-        </script>
+        <h2>HTML Forms</h2>
+
+    <form action="/form_storage.json">
+        First name:<br>
+        <input type="text" name="firstname">
+        <br>
+        Last name:<br>
+        <input type="text" name="lastname">
+        <br>
+        Email: <br>
+        <input type="text" name="email">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    </body>
+
+    <p>If you click the "Submit" button, the form-data will be sent to a page called "/form_storage.json".</p>
     
     </p>
     </body>
