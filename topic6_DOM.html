@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///C:/Users/dcrav/Documents/GitHub/CIT261_topics/topic6_DOM.html -->
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+</head>
+
+<body>
+
+    <div id="div1">
+        <h1>Take the test!</h1>
+        <p>How is your memory?</p>
+        <p id="p1">Remember this sequence: 1, 3, 5, 19, 67, 89.</p>
+
+        <button id="myBtn">Take the test!</button>
+
+        <p id="p2"></p>
+
+        <button id="myBtn2">Press to check!</button>
+    </div>
+
+    <script>
+        //on click this removes "p1" to hide the numbers. It also appends instructions for the test.
+        document.getElementById("myBtn").addEventListener("click", function removeIt() {
+            //identify the element to be removed, then removeChild()
+            var parent = document.getElementById("div1");
+            var child = document.getElementById("p1");
+            parent.removeChild(child);
+            
+            //create a new <p> element withh instructions, then appendChild()
+            var para = document.createElement("p");
+            var node = document.createTextNode("Repeat back the numbers");
+            para.appendChild(node);
+            
+            //insertBefore()"btn2"
+            var element = document.getElementById("div1");
+            var child = document.getElementById("myBtn2");
+            element.insertBefore(para, child);
+        });
+        document.getElementById("myBtn2").addEventListener("click", function addIt() {
+            var p1 = document.createElement("p");
+            var n1 = document.createTextNode("Correct answer: 1, 3, 5, 19, 67, 89.");
+            p1.appendChild(n1);
+            var element = document.getElementById("div1");
+            element.appendChild(p1);
+        });
+    </script>
+
+
+</body></html>
