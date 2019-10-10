@@ -14,10 +14,10 @@
         <h1>Take the test!</h1>
         <p>How is your memory?</p>
         <p id="p1">Remember this sequence: 1, 3, 5, 19, 67, 89.</p>
-        <p id="p2">Press the button when you are ready...</p>
+        <p id="p2">Press the first button when you are ready...</p>
         
         <!--add a CSS style change with onclick event -->
-        <button id="myBtn" onclick="document.getElementById('myBtn').style.color = 'gray'">Take the test!</button>
+        <button id="myBtn" onclick="document.getElementById('myBtn').style.color = 'white'">Take the test!</button>
         
         <p id="p3"></p>
         
@@ -25,12 +25,15 @@
     </div>
 
     <script>
-        //on click this removes "p1" to hide the numbers. It also appends instructions for the test.
+        //on click this removes "p1" to hide the numbers as well as "p2" that gives instructions for the test. 
+        //It also appends instructions for the test.
         document.getElementById("myBtn").addEventListener("click", function removeIt() {
             //identify the element to be removed, then removeChild()
             var parent = document.getElementById("div1");
             var child = document.getElementById("p1");
             parent.removeChild(child);
+            var child2 = document.getElementById("p2");
+            parent.removeChild(child2);
             
             //create a new <p> element with instructions, then appendChild()
             var para = document.createElement("p");
