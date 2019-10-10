@@ -32,16 +32,18 @@
             var child = document.getElementById("p1");
             parent.removeChild(child);
             
-            //create a new <p> element withh instructions, then appendChild()
+            //create a new <p> element with instructions, then appendChild()
             var para = document.createElement("p");
             var node = document.createTextNode("Repeat back the numbers");
             para.appendChild(node);
             
-            //insertBefore()"btn2"
+            //insertBefore()"myBtn2"
             var element = document.getElementById("div1");
             var child = document.getElementById("myBtn2");
             element.insertBefore(para, child);
         });
+        //Creates an event listener to create the <p> that shows the correct number sequence text. 
+        //Appends to bottom of div1 after clicking myBtn2
         document.getElementById("myBtn2").addEventListener("click", function addIt() {
             var p1 = document.createElement("p");
             var n1 = document.createTextNode("Correct answer: 1, 3, 5, 19, 67, 89.");
