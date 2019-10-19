@@ -1,0 +1,37 @@
+#myDIV {
+  margin: 25px;
+  width: 550px;
+  height: 100px;
+  background: orange;
+  position: relative;
+  font-size: 20px;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+  from {top: 0px;}
+  to {top: 200px;}
+}
+
+@keyframes mymove {
+  from {top: 0px;}
+  to {top: 200px;}
+}
+.animated_div {
+    width: 80px;
+    height: 60px;
+    background: #92B901;
+    color: #ffffff;
+    position: absolute;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    float: left;
+    margin: 5px;
+    -webkit-transition: width 2s;
+    transition: width 2s;
+}
+
+.animated_div:hover {
+    width: 400px;
+}

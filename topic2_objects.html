@@ -10,7 +10,7 @@
 
 
 
-    <p id="demo">
+    <p id="topic1_objects">
 
         <script>
             //Objects are variables, with values written as name:value pairs
@@ -34,11 +34,11 @@
             //person["height"] = "65 inches";
             person.height = "65 inches";
 
-            document.getElementById("demo").innerHTML = person.bio() + person.greeting();
-            document.getElementById("demo").innerHTML = person.height;
+            document.getElementById("topic1_objects").innerHTML = person.bio() + person.greeting();
+            document.getElementById("topic1_objects").innerHTML = person.height;
         </script>
     </p>
-    <p id="demo2">
+    <p id="topic1_Objects2">
         <script>
             //Instantiation
             //object constructors is the JS version of a class. 'When an object instance is created from a class, the class's constructor function is run to create it. The 
@@ -55,7 +55,7 @@
             var dallinscar = new Car('Toyota', 'Yaris', 2007);
             var scottscar = new Car('Toyota', 'Camry', 2010);
 
-            document.getElementById("demo2").innerHTML = dallinscar.model + " " + mycar.year;
+            document.getElementById("topic1_Objects2").innerHTML = dallinscar.model + " " + mycar.year;
 
             //new constructor function for people. We will combine the Car and Person to get 'owner' info for Car object
             function Person(name, age, gender) {
@@ -76,7 +76,7 @@
             }
             var mycar = new Car('Toyota', 'Sienna', 2009, dixie);
 
-            document.getElementById("demo2").innerHTML = mycar.owner.name + " has a " + mycar.year + " " + mycar.make + " " + mycar.model;
+            document.getElementById("topic1_Objects2").innerHTML = mycar.owner.name + " has a " + mycar.year + " " + mycar.make + " " + mycar.model;
         </script>
 
     </p>
