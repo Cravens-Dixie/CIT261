@@ -101,11 +101,11 @@
         <h3>Parse Method</h3>
         <p id="parse"></p>
 
-        <!--
+        
         <h3>HTML Forms</h3>
         <p id="demo3"></p>
 
-        <form action="/form_storage.json" target="_self" method="GET">
+        <form action="/form_storage.json" target="_self" method="POST">
             First name:<br>
             <input type="text" name="firstname">
             <br>
@@ -125,7 +125,8 @@
             var ePerson = fName + lName + eAddress;
             var strPerson = JSON.stringify(ePerson);
             var xhttp = new XMLHttpRequest();
-            xhttp.open("GET","/form_storage.json", true);
+            xhttp.open("POST","/form_storage.json", true);"
+            xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             xhttp.send(strPerson);   
             }
             
@@ -134,7 +135,7 @@
         </script>
 
 
-        <p>When you click the "Submit" button, the form-data will be sent to a page called "form_storage.json".</p>-->
+        <p>When you click the "Submit" button, the form-data will be sent to a page called "form_storage.json".</p>
     </div>
     <div id="XMLHttp">
         <h2>Topic 4 XMLHttpRequest Object</h2>
