@@ -101,41 +101,6 @@
         <h3>Parse Method</h3>
         <p id="parse"></p>
 
-        
-        <h3>HTML Forms</h3>
-        <p id="demo3"></p>
-
-        <form action="/form_storage.json" target="_self" method="POST">
-            First name:<br>
-            <input type="text" name="firstname">
-            <br>
-            Last name:<br>
-            <input type="text" name="lastname">
-            <br>
-            Email: <br>
-            <input type="text" name="email">
-            <br><br>
-            <input type="submit" onclick="loadInfo()" value="Submit">
-        </form>
-        <script>
-            function loadInfo() {
-            var fName = document.getElementsByName("firstname").value;
-            var lName = document.getElementsByName("lastname").value;
-            var eAddress = document.getElementsByName("email").value;
-            var ePerson = fName + lName + eAddress;
-            var strPerson = JSON.stringify(ePerson);
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST","/form_storage.json", true);"
-            xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-            xhttp.send(strPerson);   
-            }
-            
-            
-            
-        </script>
-
-
-        <p>When you click the "Submit" button, the form-data will be sent to a page called "form_storage.json".</p>
     </div>
     <div id="XMLHttp">
         <h2>Topic 4 XMLHttpRequest Object</h2>
@@ -145,13 +110,41 @@
 
     </div>
     <div id="localStorage">
-        <h2>Topic 5 Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects.
+        <h2>Topics 3 and 5 Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects, using JSON.stringify() and JSON.parse()
         </h2>
         <h3>Local Storage</h3>
         <p id="local"></p>
         <!--        <button onclick="storeMessage()">Store Message</button>-->
 
+        <p id="demo3"></p>
+        First name:<br>
+        <input type="text" id="firstname" name="firstname">
+        <br>
+        Last name:<br>
+        <input type="text" id="lastname" name="lastname">
+        <br><br>
+        <button id="saveBtn" onclick="loadInfo()">Save</button>
+
+        <p id="helloMsg"></p>
+
+        <script>
+            function loadInfo() {
+                var fName = document.getElementById("firstname").value;
+                var lName = document.getElementById("lastname").value;
+                var ePerson = fName + " " + lName;
+                localStorage.setItem("user", JSON.stringify(ePerson));
+
+            }
+
+            document.getElementById("saveBtn").addEventListener("click", message);
+            function message() {
+                var userPerson = JSON.parse(localStorage.getItem('user'));
+                document.getElementById("helloMsg").innerHTML = "Hello " + userPerson + ". Welcome to the website!";
+            }
+        </script>
+
     </div>
+
     <div id="DOM_Manipulation">
         <h2 id="domManip"> Topic 6: DOM Manipulation</h2>
         <h3 id="testTitle">Take the test!</h3>
@@ -186,7 +179,7 @@
         <iframe id="myFrame" src="/CIT261/CIT261_baseHTML.html"></iframe>
 
         <p id="demoFrame"></p>
-        
+
         <h3>Animation and Transition Events</h3>
         <p>This example uses the addEventListener() method to attach an "animationstart", "animationiteration" and "animationend" event to a DIV element.</p>
 
@@ -197,7 +190,7 @@
         <div style="height: 90px;">
             <div class="animated_div" id="transition">Transition</div>
         </div>
-            <p><a href="https://www.w3schools.com/jsref/obj_transitionevent.asp">Transition events</a></p>
+        <p><a href="https://www.w3schools.com/jsref/obj_transitionevent.asp">Transition events</a></p>
 
 
     </div>

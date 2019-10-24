@@ -370,7 +370,7 @@ var personDixie = {
      myXML.send();
  }
 
- //Topic 5 
+ //Topic 5 Local Storage API, storing and retrieving simple data, arrays, assoc. arrays, objects 
 
 
  //Topic 6 Dom Manipulation
@@ -462,6 +462,7 @@ function myEndFunction() {
   this.style.backgroundColor = "lightgray";
 }
 
+//transition event
 // Standard syntax
 document.getElementById("transition").addEventListener("transitionend", transFunction);
 
