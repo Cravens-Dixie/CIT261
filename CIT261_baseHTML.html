@@ -61,36 +61,21 @@
         <button onclick="personDixie.bio()">Get to know me!</button>
 
         <h3>Instantiation of Objects</h3>
-        <p>I created a basic Car function:<br>
-            function Car(make, model, year) {<br>
-            this.make = make;<br>
-            this.model = model;<br>
-            this.year = year;<br><br>
-            Then I instantiate a new Car object with specific properties:<br>
-            var mycar = new Car('Toyota', 'Sienna', 2009);<br>
-            var dallinscar = new Car('Toyota', 'Yaris', 2007);<br>
-            var scottscar = new Car('Toyota', 'Camry', 2010);<br><br>
-            If I call dallinscar.model + mycar.year, I get:</p>
-        <p id="topic2_Obj"></p>
-        <p>If I create a new Person object, then update my Car object to include an owner (which calls the Person object), I can link two objects together:<br><br>
-            function Person(name, age, gender) {<br>
-            this.name = name;<br>
-            this.age = age;<br>
-            this.gender = gender;<br>
-            }
-            var dixie = new Person('Dixie C', 47, 'F');<br><br>
+        <p>I created a basic Car object. No frills, just "Car" with make, model, and year (no values).<br><br>
+            Now I want to copy that object, but give it meaning. This is myCar, and it is a 2009 Toyota Sienna. Dallin also has a new (to Him) car, so I create that object as a 2007 Toyota Yaris.<br>
+            <br>
+        </p>
+        <div id="wreck">
+            <p>If Dallin and I get in a wreck:</p>
 
-            //rewrite Car() to include an owner property and link it to one of the instantiated Person() objects<br>
-            function Car(make, model, year, owner) {<br>
-            this.make = make;<br>
-            this.model = model;<br>
-            this.year = year;<br>
-            this.owner = owner;
-            }<br>
-            var mycar = new Car('Toyota', 'Sienna', 2009, dixie);<br>
+            <span id="myCarWreck"> 2009 Sienna </span>
+            <span id="dallinsCarWreck">2007 Yaris </span>
 
-            If I call mycar.owner.name + mycar.year +mycar.make + mycar.model, I get:</p>
-        <p id="topic1_Objects2"></p>
+            <p id="topic2_Obj"></p>
+        </div>
+        <p>Insurance is going to want to know whose car was whose, so I create a Person object, then update my Car object to include an owner, and link two objects together:<br><br>
+
+            <p id="topic1_Objects2"></p>
 
     </div>
     <div id="JSON">
@@ -137,6 +122,7 @@
             }
 
             document.getElementById("saveBtn").addEventListener("click", message);
+
             function message() {
                 var userPerson = JSON.parse(localStorage.getItem('user'));
                 document.getElementById("helloMsg").innerHTML = "Hello " + userPerson + ". Welcome to the website!";

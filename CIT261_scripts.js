@@ -249,20 +249,20 @@
  //syntax: var object_name = {name:"value", name2: "value2", name3: "value3"};
  //Access properties with objectName.propertyName or objectName["propertyName"]
 
-var personDixie = {
+ var personDixie = {
      name: ['Dixie', 'Cravens'],
      age: 47,
      gender: 'female',
      interests: ['crafts', 'hiking'],
      bio: function () {
-        window.alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. She likes ' + this.interests[0] + ' and ' + this.interests[1] + " and is " + this.height + ' tall.');
+         window.alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. She likes ' + this.interests[0] + ' and ' + this.interests[1] + " and is " + this.height + ' tall.');
      },
      greeting: function () {
          window.alert('Hi! I\'m ' + this.name[0] + '.');
      }
-};
-//add a new property to object "person" with objectName.newPropertyName = "newValue"; OR objectName["newPropertyName"] = "newValue";
-     personDixie.height = "65 inches";
+ };
+ //add a new property to object "person" with objectName.newPropertyName = "newValue"; OR objectName["newPropertyName"] = "newValue";
+ personDixie.height = "65 inches";
 
  //Object Instantiation
  //object constructors are the JS version of a class. 'When an object instance is created from a class, the class's constructor function is run to create it. The 
@@ -279,7 +279,8 @@ var personDixie = {
  var dallinscar = new Car('Toyota', 'Yaris', 2007);
  var scottscar = new Car('Toyota', 'Camry', 2010);
 
- document.getElementById("topic2_Obj").innerHTML = "<strong>" + dallinscar.model + " " + mycar.year + "<strong>";
+ document.getElementById("topic2_Obj").innerHTML = "<strong> We end up with a " + mycar.model + " " + dallinscar.year + "<strong>";
+
 
  //new constructor function for people. We will combine the Car and Person to get 'owner' info for Car object
  function Person(name, age, gender) {
@@ -299,8 +300,13 @@ var personDixie = {
      this.owner = owner;
  }
  var mycar = new Car('Toyota', 'Sienna', 2009, dixie);
+ var dallinscar = new Car('Toyota', 'Yaris', 2007, dallin);
 
- document.getElementById("topic1_Objects2").innerHTML = "<strong>" + mycar.owner.name + " has a " + mycar.year + " " + mycar.make + " " + mycar.model + "<strong>";
+ document.getElementById("topic1_Objects2").innerHTML = "<strong>" + mycar.owner.name + " had a " + mycar.year + " " + mycar.make + " " + mycar.model + " and " + dallinscar.owner.name + " now has a " + dallinscar.model + " harpsichord." + "<strong>";
+
+ function myWreck() {
+
+ }
 
  //topic 3, 4 JSON
 
@@ -405,69 +411,70 @@ var personDixie = {
      document.getElementById("testTitle").innerHTML = "You have the memory of an elephant!"
  });
 
-//Topic 9 JS Events
-function displayDate() {
-    document.getElementById("diplayDate").innerHTML = Date();
-}
-//Mobile Events (TouchEvent) code example
-//<body ontouchstart="isKeyPressed(event)">Some stuff here.</body>
-//<script>
-//function isKeyPressed(event){
-//if (event.ctrlKey) {
-//    alert("some message");
-//}else {
-//    alert("a different message");
-//}
-//}
-//</script>
+ //Topic 9 JS Events
+ function displayDate() {
+     document.getElementById("diplayDate").innerHTML = Date();
+ }
+ //Mobile Events (TouchEvent) code example
+ //<body ontouchstart="isKeyPressed(event)">Some stuff here.</body>
+ //<script>
+ //function isKeyPressed(event){
+ //if (event.ctrlKey) {
+ //    alert("some message");
+ //}else {
+ //    alert("a different message");
+ //}
+ //}
+ //</script>
 
-//onLoad
-document.getElementById("myFrame").onload = function() {frameFunction()};
+ //onLoad
+ document.getElementById("myFrame").onload = function () {
+     frameFunction()
+ };
 
-function frameFunction() {
-  document.getElementById("demoFrame").innerHTML = "<strong>" + "Iframe is loaded." + "<strong>";
-}
+ function frameFunction() {
+     document.getElementById("demoFrame").innerHTML = "<strong>" + "Iframe is loaded." + "<strong>";
+ }
 
-//animation event(from w3schools)
-var x = document.getElementById("myDIV");
+ //animation event(from w3schools)
+ var x = document.getElementById("myDIV");
 
-// Start the animation with JavaScript
-function myFunction() {
-  x.style.WebkitAnimation = "mymove 4s 2"; // Code for Chrome, Safari and Opera
-  x.style.animation = "mymove 4s 2";     // Standard syntax
-}
+ // Start the animation with JavaScript
+ function myFunction() {
+     x.style.WebkitAnimation = "mymove 4s 2"; // Code for Chrome, Safari and Opera
+     x.style.animation = "mymove 4s 2"; // Standard syntax
+ }
 
-// Code for Chrome, Safari and Opera
-x.addEventListener("webkitAnimationStart", myStartFunction);
-x.addEventListener("webkitAnimationIteration", myRepeatFunction);
-x.addEventListener("webkitAnimationEnd", myEndFunction);
+ // Code for Chrome, Safari and Opera
+ x.addEventListener("webkitAnimationStart", myStartFunction);
+ x.addEventListener("webkitAnimationIteration", myRepeatFunction);
+ x.addEventListener("webkitAnimationEnd", myEndFunction);
 
-// Standard syntax
-x.addEventListener("animationstart", myStartFunction);
-x.addEventListener("animationiteration", myRepeatFunction);
-x.addEventListener("animationend", myEndFunction);
+ // Standard syntax
+ x.addEventListener("animationstart", myStartFunction);
+ x.addEventListener("animationiteration", myRepeatFunction);
+ x.addEventListener("animationend", myEndFunction);
 
-function myStartFunction() {
-  this.innerHTML = "animationstart event occured - The animation has started";
-  this.style.backgroundColor = "pink";
-}
+ function myStartFunction() {
+     this.innerHTML = "animationstart event occured - The animation has started";
+     this.style.backgroundColor = "pink";
+ }
 
-function myRepeatFunction() {
-  this.innerHTML = "animationiteration event occured - The animation was played again";
-  this.style.backgroundColor = "lightblue";
-}
+ function myRepeatFunction() {
+     this.innerHTML = "animationiteration event occured - The animation was played again";
+     this.style.backgroundColor = "lightblue";
+ }
 
-function myEndFunction() {
-  this.innerHTML = "animationend event occured - The animation has completed";
-  this.style.backgroundColor = "lightgray";
-}
+ function myEndFunction() {
+     this.innerHTML = "animationend event occured - The animation has completed";
+     this.style.backgroundColor = "lightgray";
+ }
 
-//transition event
-// Standard syntax
-document.getElementById("transition").addEventListener("transitionend", transFunction);
+ //transition event
+ // Standard syntax
+ document.getElementById("transition").addEventListener("transitionend", transFunction);
 
-function transFunction() {
-  this.innerHTML = "transitionend event occured";
-  this.style.backgroundColor = "gray";
-}
-
+ function transFunction() {
+     this.innerHTML = "transitionend event occured";
+     this.style.backgroundColor = "gray";
+ }
