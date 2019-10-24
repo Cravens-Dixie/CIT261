@@ -69,11 +69,11 @@
             <p>If Dallin and I get in a wreck:</p>
 
             <span id="myCarWreck"> 2009 Sienna </span>
-            <span id="dallinsCarWreck">2007 Yaris </span>
+            <span id="dallinsCarWreck"> Yaris 2007</span>
 
             <p id="topic2_Obj"></p>
         </div>
-        <p>Insurance is going to want to know whose car was whose, so I create a Person object, then update my Car object to include an owner, and link two objects together:<br><br>
+        <p>Insurance is going to want to know whose car was whose, so I create a Person object, then update my Car object to include an owner, and link the two objects together:<br><br>
 
             <p id="topic1_Objects2"></p>
 
@@ -97,7 +97,7 @@
     <div id="localStorage">
         <h2>Topics 3 and 5 Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects, using JSON.stringify() and JSON.parse()
         </h2>
-        <h3>Local Storage</h3>
+        <h3>Saving to Local Storage</h3>
         <p id="local"></p>
         <!--        <button onclick="storeMessage()">Store Message</button>-->
 
@@ -112,22 +112,7 @@
 
         <p id="helloMsg"></p>
 
-        <script>
-            function loadInfo() {
-                var fName = document.getElementById("firstname").value;
-                var lName = document.getElementById("lastname").value;
-                var ePerson = fName + " " + lName;
-                localStorage.setItem("user", JSON.stringify(ePerson));
-
-            }
-
-            document.getElementById("saveBtn").addEventListener("click", message);
-
-            function message() {
-                var userPerson = JSON.parse(localStorage.getItem('user'));
-                document.getElementById("helloMsg").innerHTML = "Hello " + userPerson + ". Welcome to the website!";
-            }
-        </script>
+       
 
     </div>
 

@@ -304,10 +304,6 @@
 
  document.getElementById("topic1_Objects2").innerHTML = "<strong>" + mycar.owner.name + " had a " + mycar.year + " " + mycar.make + " " + mycar.model + " and " + dallinscar.owner.name + " now has a " + dallinscar.model + " harpsichord." + "<strong>";
 
- function myWreck() {
-
- }
-
  //topic 3, 4 JSON
 
  //JSON General Info
@@ -377,6 +373,22 @@
  }
 
  //Topic 5 Local Storage API, storing and retrieving simple data, arrays, assoc. arrays, objects 
+
+ function loadInfo() {
+     var fName = document.getElementById("firstname").value;
+     var lName = document.getElementById("lastname").value;
+     var ePerson = fName + " " + lName;
+     localStorage.setItem("user", JSON.stringify(ePerson));
+
+ }
+
+ document.getElementById("saveBtn").addEventListener("click", message);
+
+ function message() {
+     var userPerson = JSON.parse(localStorage.getItem('user'));
+     document.getElementById("helloMsg").innerHTML = "Hello " + userPerson + ". Welcome to the website!";
+ }
+
 
 
  //Topic 6 Dom Manipulation
