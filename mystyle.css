@@ -60,3 +60,6 @@
 .animated_div:hover {
     width: 400px;
 }
+.colorMe {
+    color: aquamarine;
+}
