@@ -423,32 +423,33 @@
      document.getElementById("testTitle").innerHTML = "You have the memory of an elephant!"
  });
 
-//Topic 7 Manipulating CSS Class Properties using JavaScript
+ //Topic 7 Manipulating CSS Class Properties using JavaScript
 
-//className (element.className;) assigns a className to an element
-//classList.add() (element.classList.add('active))
-//classList.toggle() (element.classList.toggle('active');)
-//classList.contains() (classList.contains('active');)
-//classList.replace() (classList.rplace('old', 'new');)
-//classList.remove() (classList.remove('active');)
+ //className (element.className;) assigns a className to an element
+ //classList.add() (element.classList.add('active))
+ //classList.toggle() (element.classList.toggle('active');)
+ //classList.contains() (classList.contains('active');)
+ //classList.replace() (classList.rplace('old', 'new');)
+ //classList.remove() (classList.remove('active');)
 
-function changeMe() {
-  var header3 = document.getElementsByTagName('h3');
-//this returns an array like list that has to looped through to apply the className to each item individually
-  for (i = 0; i < header3.length; i++) {
-    header3[i].className = "colorMe";
-  };  
-}
-document.getElementById("changeH3").addEventListener("dblclick", function unchangeMe() {
-    var header3color = document.getElementsByTagName('h3');
-    for (i = 0; i < header3color.length; i++) {
-    header3color[i].classList.remove("colorMe");
-    };});
+ function changeMe() {
+     var header3 = document.getElementsByTagName('h3');
+     //this returns an array like list that has to looped through to apply the className to each item individually
+     for (i = 0; i < header3.length; i++) {
+         header3[i].className = "colorMe";
+     };
+ }
+ document.getElementById("changeH3").addEventListener("dblclick", function unchangeMe() {
+     var header3color = document.getElementsByTagName('h3');
+     for (i = 0; i < header3color.length; i++) {
+         header3color[i].classList.remove("colorMe");
+     };
+ });
 
-     
-    
 
-    
+
+
+
  //Topic 9 JS Events
 
  function displayDate() {
@@ -517,3 +518,8 @@ document.getElementById("changeH3").addEventListener("dblclick", function unchan
      this.innerHTML = "transitionend event occured";
      this.style.backgroundColor = "gray";
  }
+
+//Topics 11, 12, 13 Designing, Defining, and Triggering CSS Transitions, Transforms, and Animations without JS (custom libraries)
+//Use pseudo-class selectors
+//common examples are :hover, :active, :focus, ::before, ::after
+

@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CIT261 Fluency Proofs</title>
     <link rel="stylesheet" href="mystyle.css">
-   
+
 
 </head>
 
 <body>
-    
+
     <div id="JSBasics">
         <h2>Topic 1 JS Variables</h2>
         <button onclick="getBoPeep()">Click me to meet BoPeep!</button>
@@ -102,16 +102,16 @@
         <h3>Saving to Local Storage</h3>
         <p id="demo3"></p>
         First name:<br>
-        <input type="text" id="firstname" name="firstname">
+        <input class="bigger" type="text" id="firstname" name="firstname">
         <br>
         Last name:<br>
-        <input type="text" id="lastname" name="lastname">
+        <input class="bigger" type="text" id="lastname" name="lastname">
         <br><br>
         <button id="saveBtn" onclick="loadInfo()">Save</button>
 
         <p id="helloMsg"></p>
 
-       
+
 
     </div>
 
@@ -129,23 +129,45 @@
 
         <button id="testBtn2">Press to check!</button>
     </div>
-    
+
     <div id="cssClass">
         <h2>Topic 7: Manipulating CSS ClassNames with JS</h2>
         <h3>Click the button to change all h3 color! Doubleclick to change them back to black.</h3>
         <button id="changeH3" onclick="changeMe()">Click me to change all h3 headers </button>
     </div>
-    
+
     <div id="jsEvents">
         <h2 id="javaScrEvents">Topic 9: Standard JS Events</h2>
         <h3>Standard Events</h3>
-        <p>Syntax: <i>element</i> <strong>event(event type)</strong>="some JavaScript"<br> For example, a button can have an <strong>onclick</strong> event that equals a JS Date()function.<br>A header can have <strong>onmouseover</strong>="style.color='red'" <strong>onmouseout</strong>="style.color='black'"<br>document.getElementById("myFrame").<strong>onload</strong> = function() {frameFunction()}<br>x.addEventListener("<strong>animationstart</strong>", myStartFunction)<br>JS functions are often called as event attributes<br></p>
-
+        <p>Syntax: <i>element</i> <strong>event(event type)</strong>="some JavaScript"<br>JS functions are often called as event attributes<br><br> A button can have an <strong>onclick</strong> event that equals a JS Date()function.</p>
         <button onclick="displayDate()">The time is now:</button>
         <p id="diplayDate"></p>
-        <p>Other elements can have events, like this h4 element:</p>
+        
+        <p>A header(or other elements) can change colors on mouseover:</p>
         <h4 onmouseover="style.color='red'" onmouseout="style.color='black'">I change when the mouse is on me</h4>
-        <p>There are many many possible events.<br> <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">See w3schools for a list.</a><br><a href="https://www.w3schools.com/js/js_events_examples.asp">And another good one.</a><br>All event objects are based on THE EVENT OBJECT and inherit all of its <i>properties and methods</i>. Some example events are Animation Event, Mouse Event, UiEvent, Drag Event, Focus Event, etc. These not only inherit from THE EVENT object, but they also have their own unique properties, methods, and event types. </p>
+        
+        <h4>Other events are que'ed with:</h4>
+        <ul style="list-style-type:disc;">
+            <li>document.getElementById("someID")<strong>onload</strong> = function() {some code}</li>
+            <li>Or with an event listener: x.addEventListener("<strong>animationstart</strong>", myStartFunction)</li>
+            <li> <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">See w3schools for a list.</a></li>
+            <li><a href="https://www.w3schools.com/js/js_events_examples.asp">And another good one.</a></li>
+        </ul>
+    
+        <h4>All event objects are based on THE EVENT OBJECT</h4>
+        <ul>
+            <li>and inherit all of its <i>properties and methods</i>.</li>
+            <li>but have their own Event Types.</li>
+            <li>Some example event objects include: </li>
+            <ul>
+                <li>Animation Event</li>
+                <li>Mouse Event</li>
+                <li>UiEvent</li>
+                <li>Drag Event</li>
+                <li>Focus Event</li>
+            </ul>
+            
+        </ul> 
 
         <h3>Mobile Events</h3>
         <p><strong>TouchEvents</strong> are related to UiEvents (User Interface)<br>AN example would be
@@ -171,7 +193,15 @@
 
 
     </div>
-  <script src="CIT261_scripts.js">
-    </script>  
+    
+    <div id="pseudoSelectors">
+        <h2>Topic 11, 12, 13: Designing, Defining, and Triggering CSS Transitions, Transforms, and Animations with Pseudo-Class Selectors</h2>
+        <p><strong>Transforms example</strong> is included in the Topics 3, 5 Local Storage input boxes. (They transform to be larger and move right slightly for easier reading.</p>
+        <p><strong>Animations example</strong> is shown under Topic 2: JS Objects. The animation works on :hover.</p>
+        
+    
+    </div>
+    <script src="CIT261_scripts.js">
+    </script>
 
 </body></html>
