@@ -10,13 +10,15 @@
     animation-play-state: paused;
     animation-fill-mode: forwards;
     transition: transform 2s;
+    transform: skew(-20deg);
 }
 
 #dallinsCarWreck {
     display: block;
     margin-left: 250px;
-    width: auto;
+    width: 100px;
     height: 60px;
+    transform: skew(20deg);
     background: yellow;
 }
 
