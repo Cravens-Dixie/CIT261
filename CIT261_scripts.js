@@ -519,7 +519,67 @@
      this.style.backgroundColor = "gray";
  }
 
-//Topics 11, 12, 13 Designing, Defining, and Triggering CSS Transitions, Transforms, and Animations without JS (custom libraries)
-//Use pseudo-class selectors
-//common examples are :hover, :active, :focus, ::before, ::after
+ //Topic 10 HTML5 Tags: Video, Audio, and Canvas
 
+
+ //initialize 3 variables for the 3 circles
+ var redCircle, blueCircle, yellowCircle;
+
+ //function to draw each circle object and update/redraw it as called
+ function component(x, y, r, color, startAngle, endAngle) {
+     this.x = x;
+     this.y = y;
+     this.r = r;
+     this.update = function () {
+         ctx = myArea.context;
+         ctx.beginPath();
+         ctx.arc(this.x, this.y, this.r, startAngle, endAngle);
+         ctx.fillStyle = color;
+         ctx.fill();
+         //                ctx.stroke();
+
+     }
+ }
+
+ //function to create 3 unique circles, calls component() and passes in (x, y, r, color, startangle, endangle)
+ function startMove() {
+     redCircle = new component(95, 50, 40, "red", 0, 2 * Math.PI);
+     yellowCircle = new component(10, 90, 30, "yellow", 0, 2 * Math.PI);
+     blueCircle = new component(60, 145, 35, "blue", 0, 2 * Math.PI);
+     myArea.start();
+ }
+
+ //myArea object creates the canvas element, places it in DOM and has 2 methods(start and clear) as well as an animation control(setInterval())
+ var myArea = {
+     canvas: document.createElement("canvas"),
+     start: function () {
+         this.canvas.width = 480;
+         this.canvas.height = 270;
+         this.context = this.canvas.getContext("2d");
+         document.getElementById("topic10head").insertBefore(this.canvas, document.getElementById("topic10head").childNodes[1]);
+         this.interval = setInterval(updateArea, 20); //setInterval(function, delay)--Starts repeatedly executing the function specified by function updateArea() every delay milliseconds.
+     },
+     clear: function () {
+         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+     }
+ }
+
+ //clears the canvas then moves each circle 1 pixel (in one or two directions) then call update() from component function
+
+ function updateArea() {
+     myArea.clear();
+     redCircle.x += 1; //move 1 px on x-axis
+     yellowCircle.x += 1;
+     yellowCircle.y += 1;
+     blueCircle.x += 1;
+     blueCircle.y += -1;
+     redCircle.update(); //from component()--redraws the circle
+     yellowCircle.update();
+     blueCircle.update();
+ }
+
+
+ //Topics 11, 12, 13 Designing, Defining, and Triggering CSS Transitions, Transforms, and Animations without JS (custom libraries)
+ //Use pseudo-class selectors
+ //common examples are :hover, :active, :focus, ::before, ::after

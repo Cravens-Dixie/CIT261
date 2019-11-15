@@ -142,10 +142,10 @@
         <p>Syntax: <i>element</i> <strong>event(event type)</strong>="some JavaScript"<br>JS functions are often called as event attributes<br><br> A button can have an <strong>onclick</strong> event that equals a JS Date()function.</p>
         <button onclick="displayDate()">The time is now:</button>
         <p id="diplayDate"></p>
-        
+
         <p>A header(or other elements) can change colors on mouseover:</p>
         <h4 onmouseover="style.color='red'" onmouseout="style.color='black'">I change when the mouse is on me</h4>
-        
+
         <h4>Other events are que'ed with:</h4>
         <ul style="list-style-type:disc;">
             <li>document.getElementById("someID")<strong>onload</strong> = function() {some code}</li>
@@ -153,7 +153,7 @@
             <li> <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">See w3schools for a list.</a></li>
             <li><a href="https://www.w3schools.com/js/js_events_examples.asp">And another good one.</a></li>
         </ul>
-    
+
         <h4>All event objects are based on THE EVENT OBJECT</h4>
         <ul>
             <li>and inherit all of its <i>properties and methods</i>.</li>
@@ -166,8 +166,8 @@
                 <li>Drag Event</li>
                 <li>Focus Event</li>
             </ul>
-            
-        </ul> 
+
+        </ul>
 
         <h3>Mobile Events</h3>
         <p><strong>TouchEvents</strong> are related to UiEvents (User Interface)<br>AN example would be
@@ -193,14 +193,19 @@
 
 
     </div>
-    
+
     <div id="mediaTags">
-        <h2>Topic 10: HTML5 Tags</h2>
-        
+        <h2 id="topic10head">Topic 10: HTML5 Tags</h2>
+        <button onclick="startMove()">Click to Play Animation</button>
+        <p>Idea and template for this example came from w3schools under HTML Game/ Game Components:</p>
+        <a href="https://www.w3schools.com/graphics/game_components.asp">w3schools</a>
+        </div>
+        <div>
+
         <video src="/CIT261/2019-08-2000-be-not-troubled-720p-eng.mp4" width="300" height="200" controls></video>
-<!--       could also have loop muted and autoplay attributes along with a poster-->
-<!--        Fall back content in case the video isn't recognized-->
-<!--        alternative content for different formats
+        <!--       could also have loop muted and autoplay attributes along with a poster-->
+        <!--        Fall back content in case the video isn't recognized-->
+        <!--        alternative content for different formats
             <source src="" type="">
             <source src="" type="">
 -->
@@ -209,15 +214,15 @@
         <source src="" type="">
         <source src="" type="">
         -->
-    
+
     </div>
-    
+
     <div id="pseudoSelectors">
         <h2>Topic 11, 12, 13: Designing, Defining, and Triggering CSS Transitions, Transforms, and Animations with Pseudo-Class Selectors</h2>
         <p><strong>Transforms example</strong> is included in the Topics 3, 5 Local Storage input boxes. (They transform to be larger and move right slightly for easier reading.</p>
         <p><strong>Animations and Transitions example</strong> is shown under Topic 2: JS Objects. The animation/transition works on :hover.</p>
-        
-    
+
+
     </div>
     <script src="CIT261_scripts.js">
     </script>
