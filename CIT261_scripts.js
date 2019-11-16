@@ -426,7 +426,7 @@
  //Topic 7 Manipulating CSS Class Properties using JavaScript
 
  //className (element.className;) assigns a className to an element
- //classList.add() (element.classList.add('active))
+ //classList.add() (element.classList.add('active'))
  //classList.toggle() (element.classList.toggle('active');)
  //classList.contains() (classList.contains('active');)
  //classList.replace() (classList.rplace('old', 'new');)
