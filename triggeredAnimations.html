@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dixie Cravens">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIT261 JS Animations</title>
+</head>
+<style>
+    #animate {
+        height: 175px;
+        width: 300px;
+        background: gray;
+    }
+
+
+    #numbers {
+        color: white;
+        display: block;
+        margin: .2em;
+        font-size: 5em;
+        text-align: center;
+        text-shadow: 2px 1px red;
+        animation: text-change 7s;
+    }
+
+    @keyframes text-change {
+        0% {
+
+            color: white;
+        }
+
+        40% {
+
+            color: palegreen;
+        }
+
+        55% {
+
+            color: pink;
+        }
+
+        70% {
+
+            color: orange;
+        }
+
+        85% {
+
+            color: aqua;
+        }
+
+        100% {
+
+            color: white;
+        }
+    }
+
+    #visible {
+        opacity: 1;
+        transform: translateX(01px);
+        transition:
+            opacity 1s 0.1s,
+            transform 0.5s 0.5s;
+    }
+
+    #visible:hover {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+
+
+</style>
+
+<body>
+    <div id="triggerIt">
+        <h2 id="test">Take the Test</h2>
+        <h3>How is your memory?</h3>
+        <button onclick="timer()">Start Memorizing!</button>
+        <div id="animate">
+            <p id="numbers"></p>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+<script>
+    var timerInt;
+    var numList = [];
+    var count = 0;
+    
+    function timer() {
+        timerInt = setInterval(showMe, 1000);
+    };
+ 
+    function showMe() {
+        var number = Math.ceil(Math.random() * 100);
+        document.getElementById("numbers").innerHTML = number;
+        //numList.append(number);
+        count++;
+        if (count > 5) {
+            clearInterval(timerInt);
+            document.getElementById("numbers").innerHTML = "<br>";
+        };
+    };
+
+</script>
+
+</html>
