@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dixie Cravens">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIT261 Final Project</title>
+</head>
+<style>
+    #main {
+        height: 175px;
+        width: 300px;
+        background: gray;
+        /*animation: text-change 7s;*/
+    }
+
+
+    #numbers {
+        color: aquamarine;
+        display: block;
+        margin: .2em;
+        font-size: 5em;
+        text-align: center;
+        text-shadow: 2px 1px red;
+        /*animation: text-change 7s;*/
+    }
+
+    @keyframes text-change {
+        0% {
+
+            color: white;
+            opacity: .4;
+        }
+
+        100% {
+
+            color: black;
+            opacity: 1;
+        }
+    }
+
+
+    .visibleStart {
+        opacity: 1;
+        background-color: aliceblue;
+        transform: translateX(01px);
+        transition:
+            opacity 1s 0.1s,
+            transform 0.5s 0.5s;
+    }
+
+    .visibleEnd {
+        opacity: 0;
+        background-color: yellow;
+        transform: translateX(-300px);
+    }
+</style>
+
+<body>
+    <div id="triggerIt">
+        <h2>Take the Test</h2>
+        <h3>How is your memory?</h3>
+        <button onclick="timer()">Start Memorizing!</button>
+        <div id="main">
+            <div id="container">
+                <p id="numbers"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script>
+    var timerInt;
+    var numList = [];
+    var count = 0;
+    var anim = document.getElementById("container");
+
+    //function to set an interval timer to the showMe() function...runs the random number generator at a set time interval
+    function timer() {
+        timerInt = setInterval(showMe, 1000);
+    };
+
+    //function to show 5 random numbers, one at a time, save to ?? 
+    function showMe() {
+        var number = Math.ceil(Math.random() * 100);
+        document.getElementById("numbers").innerHTML = number;
+        document.getElementById("numbers").style.animation = "text-change 7s";
+
+        //numList.append(number);
+        count++;
+        if (count > 5) {
+            clearInterval(timerInt);
+            document.getElementById("numbers").innerHTML = "<br>";
+        };
+    };
+
+    //code to add an event listener to start and end the transition for each number--opacity change, size change, fade or move on screen
+    // Code for Chrome, Safari and Opera
+    anim.addEventListener("webkitAnimationStart", function myStartFunction() {
+        anim.className = "visibleStart";
+    });
+    anim.addEventListener("webkitAnimationEnd", function myEndFunction() {
+        anim.classList.remove("visibleStart");
+        anim.className = "visibleEnd";
+    });
+
+    // Standard syntax
+    anim.addEventListener("animationstart", function myStartFunction() {
+        anim.className = "visibleStart";
+    });
+    anim.addEventListener("animationend", function myEndFunction() {
+        anim.classList.remove("visibleStart");
+        anim.className = "visibleEnd";
+    });
+</script></html>
