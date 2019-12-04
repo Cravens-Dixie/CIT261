@@ -14,46 +14,48 @@
         background: gray;
         /*animation: text-change 7s;*/
     }
-
+    #container {
+        margin: 1em;
+        padding-top: 1.5em;
+        /*background-color: aliceblue;*/
+    }
 
     #numbers {
-        color: aquamarine;
+        color: white;
         display: block;
         margin: .2em;
-        font-size: 5em;
+        /*font-size: 5em;*/
         text-align: center;
-        text-shadow: 2px 1px red;
-        /*animation: text-change 7s;*/
     }
 
     @keyframes text-change {
         0% {
 
+            color: black;
+            opacity: 0;
+        }
+        50% {
             color: white;
-            opacity: .4;
+            opacity: 1;
         }
 
         100% {
-
             color: black;
-            opacity: 1;
+            opacity: 0;
         }
     }
 
 
     .visibleStart {
-        opacity: 1;
-        background-color: aliceblue;
-        transform: translateX(01px);
-        transition:
-            opacity 1s 0.1s,
-            transform 0.5s 0.5s;
+        font-size: 5em;
+        transition: font-size .5s, transform .5s; 
+            
     }
 
     .visibleEnd {
-        opacity: 0;
-        background-color: yellow;
-        transform: translateX(-300px);
+        font-size: 3em;
+        transform: scale(2, 2);
+        /*transform: translateX(-300px);*/
     }
 </style>
 
@@ -64,7 +66,7 @@
         <button onclick="timer()">Start Memorizing!</button>
         <div id="main">
             <div id="container">
-                <p id="numbers"></p>
+                <p id="numbers">Ready! Set! Go!</p>
 
             </div>
 
@@ -77,43 +79,63 @@
     var timerInt;
     var numList = [];
     var count = 0;
-    var anim = document.getElementById("container");
+    var anim = document.getElementById("numbers");
+    var start = null;
 
     //function to set an interval timer to the showMe() function...runs the random number generator at a set time interval
     function timer() {
         timerInt = setInterval(showMe, 1000);
     };
+    //function to restart animation with each loop ***not sure this is the appropriate way to do this--and I don't know the right timing****
+    function restart(timestamp) {
+        if (!start) start = timestamp;
+        var progress = timestamp - start;
+        anim.style.animation = "text-change 3s";
+        if (progress > 200) {
+            window.requestAnimationFrame(restart);
+        }
+    }
 
-    //function to show 5 random numbers, one at a time, save to ?? 
+    //function to show 5 random numbers, one at a time, append each number to a list (numList[])
     function showMe() {
+        window.requestAnimationFrame(restart);
+        
+        //get random number
         var number = Math.ceil(Math.random() * 100);
+        
+        //insert number into p tag
         document.getElementById("numbers").innerHTML = number;
-        document.getElementById("numbers").style.animation = "text-change 7s";
-
+        
+        //append the number to numList[]
         //numList.append(number);
+        
+        //keep count of the numbers displayed
         count++;
+        
+        //if loop checks count of numbers, clears timer (so it can restart), and clears screen of previous number
         if (count > 5) {
             clearInterval(timerInt);
             document.getElementById("numbers").innerHTML = "<br>";
-        };
+            window.requestAnimationFrame(restart);
+        }
     };
 
-    //code to add an event listener to start and end the transition for each number--opacity change, size change, fade or move on screen
+    //code to add an event listener to start and end the transition for each number-- size of text changes and is removed from the screen by adding then removing a class containing a transition and transform
     // Code for Chrome, Safari and Opera
     anim.addEventListener("webkitAnimationStart", function myStartFunction() {
         anim.className = "visibleStart";
     });
     anim.addEventListener("webkitAnimationEnd", function myEndFunction() {
-        anim.classList.remove("visibleStart");
+        /*anim.classList.remove("visibleStart");*/
         anim.className = "visibleEnd";
     });
 
     // Standard syntax
     anim.addEventListener("animationstart", function myStartFunction() {
-        anim.className = "visibleStart";
+        anim.className = "visibleStart", "visibleEnd";
     });
-    anim.addEventListener("animationend", function myEndFunction() {
+    /*anim.addEventListener("animationend", function myEndFunction() {
         anim.classList.remove("visibleStart");
         anim.className = "visibleEnd";
-    });
+    });*/
 </script></html>
