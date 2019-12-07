@@ -8,24 +8,35 @@
     <title>CIT261 Final Project</title>
 </head>
 <style>
+    input {
+        margin: .5em;
+        background: aqua;
+    }
+
+    .hideMe {
+        display: none;
+    }
+
     #main {
         height: 175px;
         width: 300px;
         background: gray;
-        /*animation: text-change 7s;*/
     }
+
     #container {
         margin: 1em;
         padding-top: 1.5em;
-        /*background-color: aliceblue;*/
     }
 
     #numbers {
         color: white;
         display: block;
         margin: .2em;
-        /*font-size: 5em;*/
         text-align: center;
+    }
+
+    .anim {
+        animation: text-change 1s;
     }
 
     @keyframes text-change {
@@ -34,6 +45,7 @@
             color: black;
             opacity: 0;
         }
+
         50% {
             color: white;
             opacity: 1;
@@ -42,20 +54,8 @@
         100% {
             color: black;
             opacity: 0;
+            font-size: 5em;
         }
-    }
-
-
-    .visibleStart {
-        font-size: 5em;
-        transition: font-size .5s, transform .5s; 
-            
-    }
-
-    .visibleEnd {
-        font-size: 3em;
-        transform: scale(2, 2);
-        /*transform: translateX(-300px);*/
     }
 </style>
 
@@ -73,69 +73,84 @@
         </div>
 
     </div>
-
+    <input type="text" placeholder="Enter the numbers here." id="inputBox" class="hideMe">
+    <button type="submit" id="submitbutton" class="hideMe" onclick="createArray()">Submit</button>
+    
 </body>
 <script>
     var timerInt;
     var numList = [];
     var count = 0;
     var anim = document.getElementById("numbers");
-    var start = null;
+
 
     //function to set an interval timer to the showMe() function...runs the random number generator at a set time interval
     function timer() {
-        timerInt = setInterval(showMe, 1000);
-    };
-    //function to restart animation with each loop ***not sure this is the appropriate way to do this--and I don't know the right timing****
-    function restart(timestamp) {
-        if (!start) start = timestamp;
-        var progress = timestamp - start;
-        anim.style.animation = "text-change 3s";
-        if (progress > 200) {
-            window.requestAnimationFrame(restart);
-        }
+        if (!count) timerInt = setInterval(showMe, 1000);
     }
 
-    //function to show 5 random numbers, one at a time, append each number to a list (numList[])
+    //function to restart animation with each loop
+    // https://css-tricks.com/restart-css-animation/
+    function resetAnimation() {
+        anim.classList.remove("anim"); //Remove the animation
+        void anim.offsetWidth; //Triggers the reflow 
+        anim.classList.add("anim");
+    }
+
+
+    //function to show 5 random numbers, one at a time, then push each number to a list (numList[])
     function showMe() {
-        window.requestAnimationFrame(restart);
-        
         //get random number
         var number = Math.ceil(Math.random() * 100);
-        
+
         //insert number into p tag
         document.getElementById("numbers").innerHTML = number;
-        
-        //append the number to numList[]
-        //numList.append(number);
-        
+
         //keep count of the numbers displayed
         count++;
-        
+
         //if loop checks count of numbers, clears timer (so it can restart), and clears screen of previous number
         if (count > 5) {
             clearInterval(timerInt);
             document.getElementById("numbers").innerHTML = "<br>";
-            window.requestAnimationFrame(restart);
-        }
+            count = 0;
+            console.log(numList); // TODO: Put the numList in localStorage? to check against user input
+            createInput();
+        } else resetAnimation();
+        //push the number to numList[]
+        numList.push(number);
     };
+    //function to give user a place to type numbers shown and submit info compare()
+    function createInput() {
+        //show hidden input box
+        document.getElementById("inputBox").classList.remove("hideMe");
+        //show hidden submit button
+        document.getElementById("submitbutton").classList.remove("hideMe");
+    }
+    function createArray() {
+        //what if I parse the value of inputBox?
+        var inBoxValues = document.getElementById("inputBox");
+        var userList = [];
+        var size = 5;
+        for (i = 0; i < size; i++) {
+           userList.push( inBoxValues[i].value); 
+        };
+        console.log(userList);
 
-    //code to add an event listener to start and end the transition for each number-- size of text changes and is removed from the screen by adding then removing a class containing a transition and transform
-    // Code for Chrome, Safari and Opera
-    anim.addEventListener("webkitAnimationStart", function myStartFunction() {
-        anim.className = "visibleStart";
-    });
-    anim.addEventListener("webkitAnimationEnd", function myEndFunction() {
-        /*anim.classList.remove("visibleStart");*/
-        anim.className = "visibleEnd";
-    });
-
-    // Standard syntax
-    anim.addEventListener("animationstart", function myStartFunction() {
-        anim.className = "visibleStart", "visibleEnd";
-    });
-    /*anim.addEventListener("animationend", function myEndFunction() {
-        anim.classList.remove("visibleStart");
-        anim.className = "visibleEnd";
-    });*/
+    }
+    function compare(numList) {
+        //TODO: create an array from inputBox input named userList
+        createArray();
+        //TODO: compare numList to userList
+        if (JSON.stringify(numList)==JSON.stringify(userList))
+            //TODO: output message to user that it is correct
+            document.write("You got it!");
+        else
+            //TODO: output to user not correct
+            document.write("Not this time!");
+            //TODO: Possible to show to user which inputs were right, which were not? Maybe print numList to screen for user to compare on their own.
+    }
+    
+    //TODO: Show user a message (with AJAX?) about memory skill
+    
 </script></html>
