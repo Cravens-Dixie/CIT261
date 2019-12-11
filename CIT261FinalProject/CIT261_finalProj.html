@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dixie Cravens">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIT261 Final Project</title>
+</head>
+<style>
+    input {
+        margin: .5em;
+        background: aqua;
+    }
+
+    .hideMe {
+        display: none;
+    }
+
+    #main {
+        height: 175px;
+        width: 300px;
+        background: gray;
+    }
+
+    #container {
+        margin: 1em;
+        padding-top: 1.5em;
+    }
+
+    #numbers {
+        color: white;
+        display: block;
+        margin: .2em;
+        text-align: center;
+    }
+
+    .anim {
+        animation: text-change 1s;
+    }
+
+    @keyframes text-change {
+        0% {
+
+            color: black;
+            opacity: 0;
+        }
+
+        50% {
+            color: white;
+            opacity: 1;
+        }
+
+        100% {
+            color: black;
+            opacity: 0;
+            font-size: 5em;
+        }
+    }
+    .results {
+        font-size: 2em;
+        background: red;
+        width: 200px;
+        height: 50px;
+        transition: width 2s, height 2s, transform 2s;
+    }
+    .results.bigger {
+        width: 310px;
+        height: 200px;
+        transform: translate(-25px, -40px);
+    }
+    .results2 {
+       font-size: 2em;
+        background-color: greenyellow;
+        width: 200px;
+        height: 50px;
+        transition: width 2s, height 2s, transform 2s; 
+    }
+    .results2.bigger {
+        width: 310px;
+        height: 200px;
+        transform: translate(-25px, -40px);
+    }
+    
+
+</style>
+
+<body onload="userInfo()" >
+    <div id="triggerIt">
+        <h2>Take the Test</h2>
+        <h3>How is your memory?</h3>
+        <button onclick="timer()">Start Memorizing!</button>
+        <div id="main">
+            <div id="container">
+                <p id="numbers"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+  
+    
+
+</body>
+<script>
+    var timerInt;
+    var numList = [];
+    var userList = [];
+    var count = 0;
+    var anim = document.getElementById("numbers");
+
+    //TODO: ask for user name, store name in localStorage and greet user w a welcome message. Can I store previous game results?
+    function userInfo() {
+        var userName = prompt("Hello! Who is playing?");
+        localStorage.setItem("user", JSON.stringify(userName));
+        welcomeMsg();
+    }
+    //function to show a greeting to user from localStorage data
+    function welcomeMsg() {
+        var userName = JSON.parse(localStorage.getItem("user"));
+        anim.innerHTML = "Hello " + userName + "! Ready to play?";
+        createXML();
+    }
+
+    //function to set an interval timer to the showMe() function...runs the random number generator at a set time interval
+    function timer() {
+        if (!count) timerInt = setInterval(showMe, 1000);
+    }
+
+    //function to restart animation with each loop
+    // https://css-tricks.com/restart-css-animation/
+    function resetAnimation() {
+        anim.classList.remove("anim"); //Remove the animation
+        void anim.offsetWidth; //Triggers the reflow 
+        anim.classList.add("anim"); //adds animation class back
+    }
+    
+    //function to show 5 random numbers, one at a time, then push each number to array (numList[])
+    function showMe() {
+        //get random number
+        var number = Math.ceil(Math.random() * 100);
+
+        //insert number into p tag
+        anim.innerHTML = number;
+
+        //keep count of the numbers displayed
+        count++;
+
+        //loop checks count of numbers,and if over 5, clears timer (so it can restart), and clears screen of previous number, asks user to input numbers and puts those numbers into an array userList[]. Else it restarts the animation for next number and pushes number to numList[].
+        if (count > 5) {
+            //clear timer
+            clearInterval(timerInt);
+
+            //clear screen
+            anim.innerHTML = "<br>";
+
+            //reset count
+            count = 0;
+
+            //print numList to console
+            console.log(numList);
+
+      
+            //puts user input into array userList[]
+            createArray();
+
+            //compare numList[] to userList[] and give feedback to user
+            compareArrays();
+
+        } else {
+            resetAnimation(); //resets the animation for next number
+            
+            //push the number to numList[]
+            numList.push(number.toString());
+                }
+    };
+    
+    //function to give user a place to type numbers shown and submit info compare()
+    /*function createInput() {
+        //show hidden results paragraph
+        document.getElementById("results").classList.remove("hideMe");
+       
+    };*/
+
+    function createArray() {
+        var inBoxValues = document.getElementById("inputBox");
+        var size = 5;
+        for (i = 0; i < size; i++) {
+            userList[i] = prompt("Enter a number and press Enter");
+        };
+        console.log(userList);
+    }
+
+    //function to compare numList[] to userList[] and give feedback to user
+    function compareArrays() {
+        //compare numList to userList
+        if (JSON.stringify(numList) == JSON.stringify(userList)) {
+            //show hidden results span with results
+            /*createInput();*/
+            //output message to user that it is correct
+            anim.classList.add("results2","bigger");
+            anim.innerHTML = "You got it!";
+        } else {
+            //show hidden results span
+            /*createInput();*/
+            //output to user not correct
+            anim.classList.add("results","bigger");
+            anim.innerHTML = "Not this time!<br>" + "The numbers were " + numList + "<br>" + "You entered: " + userList;
+        }
+    }
+
+    //TODO: Show user a message (with AJAX?) about memory skill
+     //Create a function to create a XMLHttpRequest object and return the text from a txt file (JSON_Text.txt)
+ function createXML() {
+     //create a XMLHttpRequest object
+     const myXML = new XMLHttpRequest();
+     //check readystatechange for correct readyState and status   
+     myXML.onreadystatechange = function () {
+         if (myXML.readyState == 4) {
+             if (myXML.status == 200) {
+                 anim.textContent = myXML.responseText;
+             }
+             if (myXML.status == 404) {
+                 document.getElementById("getMethod").textContent = "That file could not be found.";
+             }
+         }
+     };
+     //open the request and send it
+     myXML.open('get', '/JSON_Text.txt', true);
+     myXML.send();
+ }
+
+</script>
+
+</html>
